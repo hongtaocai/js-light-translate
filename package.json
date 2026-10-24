@@ -1,0 +1,25 @@
+{
+  "name": "js-light-translate",
+  "version": "1.0.0",
+  "description": "EN<->ZH transformer running in the browser via ONNX Runtime Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hongtaocai/js-light-translate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hongtaocai/js-light-translate/issues"
+  },
+  "homepage": "https://github.com/hongtaocai/js-light-translate#readme",
+  "dependencies": {
+    "onnxruntime-web": "^1.30.0"
+  },
+  "type": "module",
+  "private": true
+}

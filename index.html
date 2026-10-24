@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Light Translate — EN ↔ ZH in your browser</title>
+  <meta name="description" content="A 22.7M-parameter English↔Chinese transformer running entirely in your browser with ONNX Runtime Web." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>" />
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+
+  <main class="shell">
+    <header class="masthead">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7h9M8.5 7v10M4 17h9" />
+            <path d="M14.5 12h5.5M17.25 12v6M14.5 18h5.5" opacity=".55" />
+          </svg>
+        </div>
+        <div>
+          <h1>Light Translate</h1>
+          <p class="tagline">A 22.7M-parameter English ↔ Chinese transformer, running entirely in your browser.</p>
+        </div>
+      </div>
+
+      <div class="chips">
+        <span class="chip" id="chip-backend"><i class="dot"></i><span>backend —</span></span>
+        <span class="chip" id="chip-size"><i class="dot"></i><span>36 MB int8</span></span>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-bar">
+        <div class="direction" id="direction-pill">
+          <span id="dir-source">EN</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          <span id="dir-target">ZH</span>
+        </div>
+        <div class="actions">
+          <button id="swap" class="ghost" title="Swap languages" aria-label="Swap languages">
+            <svg viewBox="0 0 24 24"><path d="M7 16V4M7 4 3 8M7 4l4 4M17 8v12M17 20l4-4M17 20l-4-4" /></svg>
+          </button>
+          <button id="load" class="primary">
+            <span class="label">Load model</span>
+            <span class="spinner" hidden></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="panes">
+        <div class="pane">
+          <label class="pane-label" for="input">Source</label>
+          <textarea id="input" spellcheck="false" placeholder="Type English or Chinese…">California’s billionaire tax faces a mountain of opposition — and not just from the rich</textarea>
+          <div class="pane-foot">
+            <span id="char-count">0 characters</span>
+            <button id="clear" class="link">Clear</button>
+          </div>
+        </div>
+
+        <div class="pane">
+          <label class="pane-label" for="output">Translation</label>
+          <div id="output" class="output" aria-live="polite">
+            <span class="placeholder">Load the model, then press Translate.</span>
+          </div>
+          <div class="pane-foot">
+            <span id="stats">—</span>
+            <button id="copy" class="link" disabled>Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <button id="translate" class="translate" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h8M8 5v14M4 19h8M14 9l4 10 4-10M15.2 16h5.6" /></svg>
+        <span>Translate</span>
+        <kbd>⌘↵</kbd>
+      </button>
+
+      <p class="hint" id="hint">Model weights stream from <code>models/onnx</code> — first load takes a few seconds.</p>
+    </section>
+
+    <footer class="foot">
+      <span>Encoder–decoder Transformer · 4+4 layers · 16k BPE · greedy decoding</span>
+      <span class="sep">·</span>
+      <span>No server, no API calls — inference happens on your device.</span>
+    </footer>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
